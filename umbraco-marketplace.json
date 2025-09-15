@@ -1,0 +1,45 @@
+{
+  "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "Title": "Kraftvaerk Umbraco Headless CacheKeys",
+  "PackageType": "Package",
+  "Category": "Headless",
+  "Description": "Adds cache keys and related metadata to Umbraco Delivery API responses and OpenAPI schema for smart client caching and selective invalidation.",
+  "DocumentationUrl": "https://github.com/kraftvaerk/kraftvaerk.umbraco.headless.cachekeys",
+  "IssueTrackerUrl": "https://github.com/kraftvaerk/kraftvaerk.umbraco.headless.cachekeys/issues",
+  "LicenseTypes": [
+    "Free"
+  ],
+  "AuthorDetails": {
+    "Name": "Kraftvaerk",
+    "Description": "Don't leave digital to chance. Leave it to us.",
+    "Url": "https://kraftvaerk.com",
+    "ImageUrl": "https://github.com/kraftvaerk.png",
+    "Contributors": [
+      {
+        "Name": "Kaspar Boel Kjeldsen"
+      }
+    ]
+  },
+  "PackagesByAuthor": [
+    "Kraftvaerk.Umbraco.Headless.Preview",
+    "Kraftvaerk.Umbraco.Headless.BlockPreview",
+    "Kraftvaerk.Umbraco.BlockFilter"
+  ],
+  "RelatedPackages": [
+    {
+      "PackageId": "Kraftvaerk.Umbraco.Headless.Preview"
+    },
+    {
+      "PackageId": "Kraftvaerk.Umbraco.Headless.BlockPreview"
+    }
+  ],
+  "Tags": [
+    "headless",
+    "delivery api",
+    "cache",
+    "caching",
+    "openapi",
+    "swagger",
+    "invalidation"
+  ]
+}
