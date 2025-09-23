@@ -8,7 +8,7 @@
 		<!-- Package metadata -->
 		<PackageId>Kraftvaerk.Umbraco.Headless.CacheKeys</PackageId>
 		<Title>Kraftvaerk.Umbraco.Headless.CacheKeys</Title>
-		<Version>1.0.3</Version>
+		<Version>1.0.4</Version>
 		<Authors>Kraftvaerk,Kaspar Boel Kjeldsen</Authors>
 		<Company>Kraftvaerk</Company>
 		<Description>Adds cache keys and related metadata to the Umbraco Delivery API responses and OpenAPI schema.</Description>
