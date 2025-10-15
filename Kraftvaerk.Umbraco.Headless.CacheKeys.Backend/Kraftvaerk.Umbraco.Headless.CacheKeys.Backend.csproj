@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFrameworks>net9.0;net10.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
 		<!-- Package metadata -->
 		<PackageId>Kraftvaerk.Umbraco.Headless.CacheKeys</PackageId>
 		<Title>Kraftvaerk.Umbraco.Headless.CacheKeys</Title>
-		<Version>1.0.4</Version>
+		<Version>1.1.0</Version>
 		<Authors>Kraftvaerk,Kaspar Boel Kjeldsen</Authors>
 		<Company>Kraftvaerk</Company>
 		<Description>Adds cache keys and related metadata to the Umbraco Delivery API responses and OpenAPI schema.</Description>
@@ -25,9 +25,13 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
 		<PackageReference Include="Scrutor" Version="6.0.1" />
 		<PackageReference Include="Umbraco.Cms" Version="[16.0.0, 17.0.0)" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+		<PackageReference Include="Scrutor" Version="6.0.1" />
+		<PackageReference Include="Umbraco.Cms" Version="[17.0.0-beta, 18.0.0)" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="Images\logo.png" Pack="true" PackagePath="" />

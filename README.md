@@ -13,7 +13,8 @@ dotnet add package Kraftvaerk.Umbraco.Headless.CacheKeys
 
 ## What it does
 
-This package traverses the properties of your content and adds any dependency as a cache-key to the Content Delivery Api response.
+This package traverses the properties of your content and ad
+s any dependency as a cache-key to the Content Delivery Api response.
 
 If you tag or cache your pages with the resolved keys, and invalidate pages containing any of the keys, you should have a very snappy website without invalidating too much of your front-end on publish.
 
