@@ -8,7 +8,7 @@
 		<!-- Package metadata -->
 		<PackageId>Kraftvaerk.Umbraco.Headless.CacheKeys</PackageId>
 		<Title>Kraftvaerk.Umbraco.Headless.CacheKeys</Title>
-		<Version>1.1.0</Version>
+		<Version>1.1.2</Version>
 		<Authors>Kraftvaerk,Kaspar Boel Kjeldsen</Authors>
 		<Company>Kraftvaerk</Company>
 		<Description>Adds cache keys and related metadata to the Umbraco Delivery API responses and OpenAPI schema.</Description>
@@ -31,7 +31,8 @@
 	</ItemGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
 		<PackageReference Include="Scrutor" Version="6.0.1" />
-		<PackageReference Include="Umbraco.Cms" Version="[17.0.0-beta, 18.0.0)" />
+		<PackageReference Include="Umbraco.Cms" Version="[17.0.0, 18.0.0)" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.0.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="Images\logo.png" Pack="true" PackagePath="" />
