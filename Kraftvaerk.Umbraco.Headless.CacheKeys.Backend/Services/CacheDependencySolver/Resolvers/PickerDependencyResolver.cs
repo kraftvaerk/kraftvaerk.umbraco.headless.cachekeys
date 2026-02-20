@@ -7,12 +7,12 @@ namespace Kraftvaerk.Umbraco.Headless.CacheKeys.Backend.Services.CacheDependency
 public class PickerDependencyResolver
 {
 
-    public IEnumerable<string> GetPickerDependencies(IContent content)
+    public IEnumerable<string> GetPickerDependencies(IContent content, string? culture = null)
     {
         foreach (var property in content.Properties)
         {
             var editorAlias = property.PropertyType.PropertyEditorAlias;
-            var rawValue = property.GetValue()?.ToString();
+            var rawValue = property.GetValue(culture)?.ToString();
 
             if (string.IsNullOrWhiteSpace(rawValue))
                 continue;

@@ -12,7 +12,7 @@ public class RelationDependencyResolver
         _contentService = contentService;
     }
 
-    public IEnumerable<string> GetRelationDependencies(IContent content)
+    public IEnumerable<string> GetRelationDependencies(IContent content, string? culture = null)
     {
         var relations = _relationService.GetByChildId(content.Id);
 

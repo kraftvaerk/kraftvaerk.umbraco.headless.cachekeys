@@ -9,7 +9,7 @@ public interface ICacheKeyDependencyResolver
     /// </summary>
     /// <param name="content">The published content item.</param>
     /// <returns>A collection of cache keys as strings.</returns>
-    IEnumerable<string> GetDependencies(IContent content);
+    IEnumerable<string> GetDependencies(IContent content, string? culture = null);
 
 }
 
