@@ -1,0 +1,125 @@
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{css.graphql,html,js,json,nix,ts,tf,yml,yaml}]
+indent_size: 2
+
+# Verify settings
+[*.{received,verified}.{json,txt,xml}]
+charset = "utf-8-bom"
+end_of_line = lf
+indent_size = unset
+indent_style = unset
+insert_final_newline = false
+tab_width = unset
+trim_trailing_whitespace = false
+
+# C# Settings
+[*.cs]
+## Symbol: Constants
+dotnet_naming_symbols.private_constants.applicable_kinds           = property, field
+dotnet_naming_symbols.private_constants.applicable_accessibilities = private
+dotnet_naming_symbols.private_constants.required_modifiers         = const
+
+dotnet_naming_symbols.public_constants.applicable_kinds           = property, field
+dotnet_naming_symbols.public_constants.applicable_accessibilities = public
+dotnet_naming_symbols.public_constants.required_modifiers         = const
+
+## Symbol: Public Methods
+dotnet_naming_symbols.public_method.applicable_kinds           = method
+dotnet_naming_symbols.public_method.applicable_accessibilities = public
+
+## Symbol: Private Static Fields
+dotnet_naming_symbols.private_static_fields.applicable_kinds           = field
+dotnet_naming_symbols.private_static_fields.applicable_accessibilities = private
+dotnet_naming_symbols.private_static_fields.required_modifiers         = readonly, static
+
+## Symbol: Private Fields
+dotnet_naming_symbols.private_fields.applicable_kinds           = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+
+## Style: ALL_UPPER_SNAKE_CASE
+dotnet_naming_style.all_upper_snake_case.capitalization = all_upper
+dotnet_naming_style.all_upper_snake_case.word_separator = _
+
+## Style: Pascal_Snake_Case
+dotnet_naming_style.pascal_snake_case.capitalization = pascal_case
+dotnet_naming_style.pascal_snake_case.word_separator = _
+
+## Style: PascalCase
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+## Style: _camelCase
+dotnet_naming_style.underscore_came_case.capitalization = camel_case
+dotnet_naming_style.underscore_came_case.required_prefix = _
+
+## Rule: Usings should have system usings first
+dotnet_sort_system_directives_first = true
+
+## Rule: Usings should not be separated into groups by a blank line
+dotnet_separate_import_directive_groups = false
+
+## Rule: Unnecessary usings should be removed
+dotnet_diagnostic.IDE0005.severity = warning
+
+## Rule: Namespaces should match folder structure
+dotnet_style_namespace_match_folder = true
+dotnet_diagnostic.IDE0130.severity  = warning
+
+## Rule: Namespaces should be file scoped
+csharp_style_namespace_declarations = file_scoped
+dotnet_diagnostic.IDE0161.severity  = warning
+
+## Rule: Private constants should be ALL_UPPER_SNAKE_CASE
+dotnet_naming_rule.private_constant_all_upper_snake_case.symbols  = private_constants
+dotnet_naming_rule.private_constant_all_upper_snake_case.style    = all_upper_snake_case
+dotnet_naming_rule.private_constant_all_upper_snake_case.severity = warning
+
+## Rule: Public constants should be PascalCase - This also applies to enum
+dotnet_naming_rule.public_constant_pascal_case.symbols  = public_constants
+dotnet_naming_rule.public_constant_pascal_case.style    = pascal_case
+dotnet_naming_rule.public_constant_pascal_case.severity = warning
+
+## Rule: Enforce Pascal Case on private static readonly fields
+dotnet_naming_rule.private_static_fields_pascal_case.symbols  = private_static_fields
+dotnet_naming_rule.private_static_fields_pascal_case.style    = pascal_case
+dotnet_naming_rule.private_static_fields_pascal_case.severity = warning
+
+## Rule: Prefix private fields with _
+dotnet_naming_rule.private_fields_underscore.symbols  = private_fields
+dotnet_naming_rule.private_fields_underscore.style    = underscore_came_case
+dotnet_naming_rule.private_fields_underscore.severity = warning
+
+## Rule: Make type sealed
+dotnet_diagnostic.EC85.severity = warning
+
+## Rule: Return `Task` directly
+dotnet_diagnostic.EC93.severity = warning
+
+## Rule: Complete the task associated to the 'TODO' comment
+dotnet_diagnostic.S1135.severity = suggestion
+
+## Rule: Remove this commented out code
+dotnet_diagnostic.S125.severity = suggestion
+
+## Rule: Remove this unused private constructor
+dotnet_diagnostic.S1144.severity = suggestion
+
+[**/test/**/{*.cs}]
+## Rule: Public test methods should be Pascal_Snake_Case
+dotnet_naming_rule.public_method_pascal_snake_case.symbols  = public_method
+dotnet_naming_rule.public_method_pascal_snake_case.style    = pascal_snake_case
+dotnet_naming_rule.public_method_pascal_snake_case.severity = warning
+
+## Rule: Rename class 'Class_Name' to match pascal case naming rules, consider using 'ClassName'.
+dotnet_diagnostic.S101.severity = none

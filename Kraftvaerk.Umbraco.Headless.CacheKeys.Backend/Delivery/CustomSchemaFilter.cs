@@ -8,12 +8,22 @@ using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 namespace Kraftvaerk.Umbraco.Headless.CacheKeys.Backend.Delivery;
 
+/// <summary>
+/// Adds a <c>cacheKeys</c> property to every <c>*PropertiesModel</c> schema in the generated
+/// Swagger/OpenAPI document.
+/// </summary>
 public sealed class CustomSchemaFilter : IDocumentFilter
 {
-
+    /// <summary>
+    /// Adds the <c>cacheKeys</c> array-of-uuid property to each matching schema in <paramref name="context"/>.
+    /// </summary>
+    /// <remarks>
+    /// Targets .NET 10+'s <see cref="JsonSchemaType"/> enum where available, falling back to the
+    /// string-based <c>Type</c>/<c>Format</c> representation used by Microsoft.OpenApi.Models on earlier targets.
+    /// </remarks>
     public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
     {
-        foreach (var (schemaId, schema) in context.SchemaRepository.Schemas
+        foreach (var (_, schema) in context.SchemaRepository.Schemas
                      .Where(x => x.Key.InvariantEndsWith("PropertiesModel")))
         {
             if(schema.Properties is null)
@@ -23,7 +33,6 @@ public sealed class CustomSchemaFilter : IDocumentFilter
 #if NET10_0_OR_GREATER
             schema.Properties["cacheKeys"] = new OpenApiSchema
             {
-                // JsonSchemaType is the new enum for OpenAPI schema types
                 Type = JsonSchemaType.Array,
                 Items = new OpenApiSchema
                 {

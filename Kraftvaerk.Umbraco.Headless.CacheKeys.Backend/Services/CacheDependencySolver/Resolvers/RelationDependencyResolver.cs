@@ -2,26 +2,37 @@ using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Services;
 
 namespace Kraftvaerk.Umbraco.Headless.CacheKeys.Backend.Services.CacheDependencySolver.Resolvers;
-public class RelationDependencyResolver
-{
-    private readonly IRelationService _relationService;
-    private readonly IContentService _contentService;
-    public RelationDependencyResolver(IRelationService relationService, IContentService contentService)
-    {
-        _relationService = relationService;
-        _contentService = contentService;
-    }
 
-    public IEnumerable<string> GetRelationDependencies(IContent content)
+/// <summary>
+/// Resolves cache key dependencies from Umbraco relations pointing at a content item.
+/// </summary>
+internal sealed class RelationDependencyResolver(IRelationService relationService, IContentService contentService)
+{
+    /// <summary>
+    /// Resolves cache keys for content related to <paramref name="content"/> through relation types
+    /// explicitly marked as dependencies, excluding housekeeping types like <c>relateOnCopy</c>/<c>relateOnTrash</c>.
+    /// </summary>
+    /// <param name="content">The content node to inspect.</param>
+    /// <param name="culture">Culture to filter related content by; unfiltered when <see langword="null"/>.</param>
+    public IEnumerable<string> GetRelationDependencies(IContent content, string? culture = null)
     {
-        var relations = _relationService.GetByChildId(content.Id);
+        var relations = relationService.GetByChildId(content.Id);
 
         foreach (var relation in relations)
         {
-            var key = _contentService.GetById(relation.ParentId);
-            if (key != null)
-                yield return $"content-{key.Key}";
+            if (relation.RelationType is not IRelationTypeWithIsDependency { IsDependency: true })
+                continue;
+
+            var related = contentService.GetById(relation.ParentId);
+            if (related == null)
+                continue;
+
+            if (!string.IsNullOrEmpty(culture) &&
+                related.AvailableCultures.Any() &&
+                !related.AvailableCultures.Contains(culture, StringComparer.OrdinalIgnoreCase))
+                continue;
+
+            yield return $"content-{related.Key}";
         }
     }
 }
-
