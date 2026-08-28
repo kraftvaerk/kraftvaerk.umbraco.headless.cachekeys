@@ -1,6 +1,7 @@
 using Umbraco.Cms.Core.Models;
 
 namespace Kraftvaerk.Umbraco.Headless.CacheKeys.Backend.Services.CacheDependencySolver;
+
 public interface ICacheKeyDependencyResolver
 {
     /// <summary>
@@ -8,8 +9,7 @@ public interface ICacheKeyDependencyResolver
     /// Includes direct and indirect dependencies.
     /// </summary>
     /// <param name="content">The published content item.</param>
+    /// <param name="culture">Optional culture code to resolve culture-specific dependencies.</param>
     /// <returns>A collection of cache keys as strings.</returns>
-    IEnumerable<string> GetDependencies(IContent content);
-
+    IEnumerable<string> GetDependencies(IContent content, string? culture = null);
 }
-

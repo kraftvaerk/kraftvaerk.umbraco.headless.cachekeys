@@ -4,6 +4,7 @@
 		<TargetFrameworks>net9.0;net10.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<NoWarn>$(NoWarn);NU1902;NU1903</NoWarn>
 
 		<!-- Package metadata -->
 		<PackageId>Kraftvaerk.Umbraco.Headless.CacheKeys</PackageId>
@@ -23,6 +24,7 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
@@ -31,8 +33,9 @@
 	</ItemGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
 		<PackageReference Include="Scrutor" Version="6.0.1" />
-		<PackageReference Include="Umbraco.Cms" Version="[17.0.0, 18.0.0)" />
+		<PackageReference Include="Umbraco.Cms" Version="[17.0.0, 18.0.0]" />
 		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="Images\logo.png" Pack="true" PackagePath="" />
@@ -42,4 +45,3 @@
 		</None>
 	</ItemGroup>
 </Project>
-
